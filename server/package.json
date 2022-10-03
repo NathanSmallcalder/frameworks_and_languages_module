@@ -1,0 +1,14 @@
+{
+  "name": "assignement_task",
+  "version": "1.0.0",
+  "description": "task",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
