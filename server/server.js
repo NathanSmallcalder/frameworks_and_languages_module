@@ -16,14 +16,14 @@ app.get('/', (req, res) => {
 })
 
 app.post('/add', (req, res) =>{
-    ATTENDEES.push(req.body)
+    STORAGE.push(req.body)
     res.status(201).json(req.body)
-    console.log(ATTENDEES)
+    console.log(STORAGE)
   })
   
-app.delete('/attendee/:id', (req,res) => { 
-    ATTENDEES = ATTENDEES.filter(o => o.id !== parseFloat(req.ID))
-    console.log('deleted', ATTENDEES)
+app.delete('/added/:id', (req,res) => { 
+    STORAGE = STORAGE.filter(o => o.id !== parseFloat(req.ID))
+    console.log('deleted', STORAGE)
 })
   
 
