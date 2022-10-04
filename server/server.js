@@ -24,9 +24,9 @@ app.post('/add', (req, res) =>{
 app.delete('/added/:id', (req,res) => { 
     STORAGE = STORAGE.filter(o => o.id !== parseFloat(req.ID))
     console.log('deleted', STORAGE)
+    res.status(204).json()
 })
   
-
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
