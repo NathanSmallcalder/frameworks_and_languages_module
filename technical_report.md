@@ -10,7 +10,8 @@ Server Framework Features
 Routing (name of Feature 1)
 
 (Technical description of the feature - 40ish words - 1 mark)
-Express JS allows the user to define the URLs to seperate webpages by configuring the ending of a URL, allowing for intergration of HTTP methods at the end of a URL, allowing the application to handle requests efficently.
+
+Express JS allows the user to use Routing to define the URLs to separate webpages by configuring the ending of a URL, which will allow the application to respond to a HTTP request method, with each route being able to have multiple request methods, which have seperae functionality, and executed when the URL is matched.
 
 (A code block snippet example demonstrating the feature - 1 mark)
 
@@ -23,9 +24,12 @@ Express JS allows the user to define the URLs to seperate webpages by configurin
 ```
 
 (Explain the problem-this-is-solving/why/benefits/problems - 40ish words - 1 mark)
+-Seperate traffic
+-Shapes how the application will handle the HTTP requests by the client
 
 (Provide reference urls to your sources of information about the feature - required)
 https://expressjs.com/en/guide/routing.html
+https://expressjs.com/en/starter/basic-routing.html
 
 ### (name of Feature 2)
 
