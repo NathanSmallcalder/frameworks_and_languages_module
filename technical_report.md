@@ -7,13 +7,23 @@ Technical Report
 Server Framework Features
 -------------------------
 
-### (name of Feature 1)
+Routing (name of Feature 1)
 
 (Technical description of the feature - 40ish words - 1 mark)
-(A code block snippet example demonstrating the feature - 1 mark)
-(Explain the problem-this-is-solving/why/benefits/problems - 40ish words - 1 mark)
-(Provide reference urls to your sources of information about the feature - required)
+Express JS allows the user to define the URLs to seperate webpages by configuring the ending of a URL, allowing for intergration of HTTP methods at the end of a URL, allowing the application to handle requests efficently.
 
+(A code block snippet example demonstrating the feature - 1 mark)
+'''js
+    app.post('/add', (req, res) =>{
+    STORAGE.push(req.body)
+    res.status(201).json(req.body)
+    console.log(STORAGE)
+  })
+'''
+(Explain the problem-this-is-solving/why/benefits/problems - 40ish words - 1 mark)
+
+(Provide reference urls to your sources of information about the feature - required)
+https://expressjs.com/en/guide/routing.html
 
 ### (name of Feature 2)
 
