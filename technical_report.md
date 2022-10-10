@@ -24,8 +24,6 @@ Express JS allows the user to use Routing to define the URLs to separate webpage
 ```
 
 (Explain the problem-this-is-solving/why/benefits/problems - 40ish words - 1 mark)
--Seperate traffic
--Shapes how the application will handle the HTTP requests by the client
 Routing enables the user to seperate and utilize HTTP requests to provide diffrent functionality per requeste, which intern provides the ability to seperate web traffic and provide muti-functionality to a request method.
 
 (Provide reference urls to your sources of information about the feature - required)
