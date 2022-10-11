@@ -6,7 +6,7 @@ app.use(express.json());
 
 STORAGE = []
 
-app.get('/addes', (req,res) => {
+app.get('/items', (req,res) => {
   res.json(STORAGE)
   console.log('get', STORAGE)
 })
@@ -15,10 +15,11 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-app.post('/add', (req, res) =>{
+app.post('/item', (req, res) =>{
+    console.log(STORAGE)
     STORAGE.push(req.body)
     res.status(201).json(req.body)
-    console.log(STORAGE)
+    
   })
   
 app.delete('/added/:id', (req,res) => { 
