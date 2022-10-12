@@ -22,14 +22,6 @@ const init = async () => {
 
     server.route({
         method: 'GET',
-        path: '/',
-        handler: (request, h) => {
-            return 'Hello World!';
-        }
-    });
-
-    server.route({
-        method: 'GET',
         path: '/items',
         handler: (request, reply) => {
             return h.response(storage).code(201)
