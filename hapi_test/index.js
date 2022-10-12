@@ -8,7 +8,16 @@ const init = async () => {
 
     const server = Hapi.server({
         port: 8000,
-        host: 'localhost'
+        host: '0.0.0.0'
+    });
+
+    
+    server.route({
+        method: 'GET',
+        path: '/',
+        handler: (request, h) => {
+            request.response.stream('/')
+        }
     });
 
     server.route({
@@ -23,7 +32,7 @@ const init = async () => {
         method: 'GET',
         path: '/items',
         handler: (request, reply) => {
-            return storage
+            return h.response(storage).code(201)
         }
     });
 
@@ -43,6 +52,11 @@ const init = async () => {
         path: '/item/{user_id}',
         handler: (request, h) => {
             let id = request.params.user_id
+            if ([...storage.filter((storage)=>storage.user_id != id)])
+            {
+                console.log("eeee")
+                return h.response(json.parse('{}').code(404))
+            }
             storage = [...storage.filter((storage)=>storage.user_id != id)]
             console.log('deleted', storage)
             return h.response(JSON.parse('{}')).code(201)
