@@ -1,67 +1,61 @@
 'use strict';
 
 const Hapi = require('@hapi/hapi');
+const Path = require('path');
+const { stopCoverage } = require('v8');
 
+// create new server instance
+const server = new Hapi.Server({  
+    host: '0.0.0.0',
+    port: 8000
+})
 let storage = []
 
-const init = async () => {
+async function liftOff () {  
+  await server.register({
+    plugin: require('inert')
+  })
+  await server.start()
+  console.log('Server started at: ' + server.info.uri)
+  process.on('SIGINT', function() {process.exit()})
+}
 
-    const server = Hapi.server({
-        port: 8000,
-        host: '0.0.0.0'
-    });
+server.route({  
+    method: 'GET',
+    path: '/',
+    handler: (request, h) => {
 
-    
-    server.route({
-        method: 'GET',
-        path: '/',
-        handler: (request, h) => {
-            request.response.stream('/')
-        }
-    });
-
-    server.route({
-        method: 'GET',
-        path: '/items',
-        handler: (request, reply) => {
-            return h.response(storage).code(201)
-        }
-    });
-
-    server.route({
-        method: 'POST',
-        path: '/item',
-        handler: (request, h) => {
-            var payload = request.payload
-            storage.push(payload)
-            console.log(storage)
-            return h.response(storage).code(201)
-        }
-    });
-
-    server.route({
-        method: 'DELETE',
-        path: '/item/{user_id}',
-        handler: (request, h) => {
-            let id = request.params.user_id
-            if ([...storage.filter((storage)=>storage.user_id != id)])
-            {
-                console.log("eeee")
-                return h.response(json.parse('{}').code(404))
-            }
-            storage = [...storage.filter((storage)=>storage.user_id != id)]
-            console.log('deleted', storage)
-            return h.response(JSON.parse('{}')).code(201)
-        }
-    });
-
-    await server.start();
-    console.log('Server running on %s', server.info.uri);
-};
-
-process.on('unhandledRejection', (err) => {
-    console.log(err);
-    process.exit(1);
+    }
+  })
+  
+  server.route({
+    method: 'POST',
+    path: '/item',
+    handler: (request, h) => {
+        var payload = request.payload
+        storage.push(payload)
+        return h.response(payload).code(201)
+    }
 });
 
-init();
+  server.route({
+    method: 'GET',
+    path: '/items',
+    handler: (request, reply) => {
+        return reply.response(storage).code(201)
+    }
+});
+
+server.route({
+    method: 'DELETE',
+    path: '/item/{id}',
+    handler: (request, h) => {
+        let id = request.params.user_id;
+        storage = [...storage.filter((storage)=>storage.user_id != id)]
+        console.log(storage)
+        console.log('deleted', storage)
+        return h.response(JSON.parse('{}')).code(201)
+
+}});
+
+liftOff();

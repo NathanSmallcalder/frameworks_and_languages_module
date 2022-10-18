@@ -4,30 +4,32 @@ const port = 8000
 
 app.use(express.json());
 
-STORAGE = []
+storage = []
 
 app.get('/items', (req,res) => {
-  res.json(STORAGE)
-  console.log('get', STORAGE)
+  res.json(storage)
+  console.log('get', storage)
 })
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
 })
 
 app.post('/item', (req, res) =>{
-    console.log(STORAGE)
-    STORAGE.push(req.body)
+    console.log(storage)
+    storage.push(req.body)
     res.status(201).json(req.body)
     
   })
   
-app.delete('/added/:id', (req,res) => { 
-    STORAGE = STORAGE.filter(o => o.id !== parseFloat(req.ID))
-    console.log('deleted', STORAGE)
+app.delete('/item/:id', (req,res) => {
+    const id = req.params.id;
+    console.log(id)
+    storage = [...storage.filter((storage)=>storage.id != id)]
+    console.log('deleted', storage)
     res.status(204).json()
 })
-  
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
+  process.on('SIGINT', function() {process.exit()})
 })
