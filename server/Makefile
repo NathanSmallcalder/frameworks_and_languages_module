@@ -1,4 +1,4 @@
-DOCKER_IMAGE:=http_server_python
+DOCKER_IMAGE:=express
 
 help:
 	# This is some help
