@@ -20,7 +20,7 @@ ITEM = {
   },
   3: {
     "id":3,
-    "user_id": "user1234",
+    "user_id": "user12",
     "keywords": ["hammer", "nails", "tools"],
     "description": "A hammer and nails set",
     "image": "https://www.placekitten.com/200/100",
@@ -59,13 +59,26 @@ app.post('/item', (req,res) => {
     }
 })
 
-app.get('/items/', (req,res) => {
-  ///Due to nested Dictionary, A list was needed to remove the initial keys from the dictionary.
+app.get('/items', (req,res) => {
+  var id = req.query.user_id;
+  var obj;
+  console.log(id)
   ItemList = []
   for (const value of Object.values(ITEM)) {
     ItemList.push(value)
   }
-  res.status(200).json(ItemList)
+  if(req.query.user_id){
+    ItemList=[]
+    for (const value of Object.values(ITEM))
+    {
+      if (value.user_id == id) 
+      {
+        obj = value;
+        ItemList.push(obj)
+      }
+    }
+    }
+    res.status(200).json(ItemList)
 })
 
 app.get('/item/:id' , (req,res) => {
@@ -75,18 +88,6 @@ app.get('/item/:id' , (req,res) => {
   }
   else{
     res.status(404).send("Item not found")
-  }
-})
-
-///USERID search option- not functional
-app.get('/item/:user_id' , (req,res) => {
-  var user_id = req.params.user_id
-  const index = ITEM.map(e => e.user_id).indexOf(user_id);
-  if(ITEM.hasOwnProperty(index)){
-    res.json(ITEM[index])
-  }
-  else{
-    res.status(404).send("Item not found", index)
   }
 })
 
@@ -115,6 +116,5 @@ app.listen(port, () => {
 
 process.on('SIGINT', function() {process.exit()})
 
-
 // https://livecodestream.dev/post/everything-you-should-know-about-javascript-dictionaries/
-// 
+// https://stackoverflow.com/questions/46374993/find-a-value-in-a-dictionary-with-a-certain-property
