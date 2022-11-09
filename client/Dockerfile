@@ -1,8 +1,5 @@
-FROM alpine
+FROM python:alpine
 
 WORKDIR /app/
-COPY package.json ./
-RUN npm init vue@latest
-RUN npm install
 COPY . .
-ENTRYPOINT ["npm run dev"]
+CMD ["python3", "-m" ,"http.server", "8001"]
