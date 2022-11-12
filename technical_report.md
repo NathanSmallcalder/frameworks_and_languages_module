@@ -6,8 +6,9 @@ Technical Report
 
 Server Framework Features
 -------------------------
+## Express
 
-Routing
+### Routing
 
 Express JS allows the user to use Routing to define the URLs to separate webpages by configuring the ending of a URL, which will allow the application to respond to a HTTP request method, with each route being able to have multiple request methods, which have seperate functionality, and executed when the URL is matched.
 
@@ -25,7 +26,7 @@ Refrences
 https://expressjs.com/en/guide/routing.html
 https://expressjs.com/en/starter/basic-routing.html
 
-### (name of Feature 2)
+### Templating
 
 (Technical description of the feature - 40ish words - 1 mark)
 (A code block snippet example demonstrating the feature - 1 mark)
@@ -44,12 +45,20 @@ https://expressjs.com/en/starter/basic-routing.html
 Server Language Features
 -----------------------
 
-### (name of Feature 1)
+### HasOwnProperty
 
-(Technical description of the feature - 40ish words - 1 mark)
-(A code block snippet example demonstrating the feature - 1 mark)
+JavaScript has a feature which allows the user to call the HasOwnProperty() method on an object to check whether the object contains an attribute, this method will return a boolean value if the object contains a given attribute that is parsed into the method.
+
+```js
+var itemID = parseInt(req.params.id)
+  if(ITEM.hasOwnProperty(itemID)){
+    res.json(ITEM[itemID])
+  }
+```
 (Explain the problem-this-is-solving/why/benefits/problems - 40ish words - 1 mark)
-(Provide reference urls to your sources of information about the feature - required)
+
+References
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty
 
 
 ### (name of Feature 2)
