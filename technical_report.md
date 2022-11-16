@@ -64,7 +64,7 @@ var itemID = parseInt(req.params.id)
     res.json(ITEM[itemID])
   }
 ```
-The ``` HasOwnProperty()``` method will return true if the given property is an attribute within the object, even if the value is null or undefined, and can be called on most Objects, to see if a given object contains an attribute, which prevents unnessasary object loops to find a given variable.
+The ```HasOwnProperty()``` method will return true if the given property is an attribute within the object, even if the value is null or undefined, and can be called on most Objects, to see if a given object contains an attribute, which prevents unnessasary object loops to find a given variable.
 
 References
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty
@@ -87,7 +87,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects
 Client Framework Features
 -------------------------
 
-### (name of Feature 1)
+### Data Binding
 
 (Technical description of the feature - 40ish words - 1 mark)
 (A code block snippet example demonstrating the feature - 1 mark)
