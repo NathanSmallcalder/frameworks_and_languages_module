@@ -56,7 +56,7 @@ Server Language Features
 
 ### HasOwnProperty
 
-JavaScript has a feature which allows the user to invoke the '''js HasOwnProperty()''' method which can be called on an object to check whether the object contains an attribute, this method will return a boolean value if the object contains a given attribute that is parsed into the method.
+JavaScript has a feature which allows the user to invoke the ```HasOwnProperty()``` method which can be called on an object to check whether the object contains an attribute, this method will return a boolean value if the object contains a given attribute that is parsed into the method.
 
 ```js
 var itemID = parseInt(req.params.id)
@@ -64,7 +64,7 @@ var itemID = parseInt(req.params.id)
     res.json(ITEM[itemID])
   }
 ```
-The '''js HasOwnProperty()''' method will return true if the given property is an attribute within the object, even if the value is null or undefined, and can be called on most Objects, to see if a given object contains an attribute, which prevents unnessasary object loops to find a given variable.
+The ``` HasOwnProperty()``` method will return true if the given property is an attribute within the object, even if the value is null or undefined, and can be called on most Objects, to see if a given object contains an attribute, which prevents unnessasary object loops to find a given variable.
 
 References
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty
