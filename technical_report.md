@@ -10,7 +10,7 @@ Server Framework Features
 
 ### Routing
 
-Express JS allows the user to use Routing to define the URLs to separate webpages by configuring the ending of a URL, which will allow the application to respond to a HTTP request method, with each route being able to have multiple request methods, which have separate functionality, and executed when the URL is matched.
+Express JS allows the user to use routing to define URLs to separate webpages by configuring the ending of a URL, the application then responds to a HTTP request method, with each route being able to have multiple request methods, which have separate functionality, and executed when the URL is matched.
 
 ```js
     app.post('/add', (req, res) =>{
@@ -20,7 +20,7 @@ Express JS allows the user to use Routing to define the URLs to separate webpage
     })
 ```
 
-Routing enables the user to separate and utilize HTTP requests to provide different functionality per request, providing the ability to separate web traffic and provide muti-functionality to a request method.
+Routing enables the user to separate and utilize HTTP requests to provide different functionality per request, providing the ability to separate web traffic and provide multi-functionality to a request method. Middleware functions are typically embedded to one or more route handlers, executing when a HTTP request is received by the API.
 
 References
 https://expressjs.com/en/guide/routing.html
@@ -29,8 +29,7 @@ https://expressjs.com/en/starter/basic-routing.html
 
 ### Middleware 
 
-(Technical description of the feature - 40ish words - 1 mark)
-Middleware integrates pre and post processing into the requests and responses methods, allowing a method to be evoked before the client receives a response and after the client returns a response, providing functionality to manipulate response or request objects.
+Middleware integrates pre and post processing into the requests and responses methods, allowing a method to be invoked before the client receives a response and after the client returns a response, providing functionality to manipulate response or request objects.
 
 ```js
   var cors = require('cors');
@@ -52,13 +51,12 @@ https://reflectoring.io/express-middleware/
 (Provide reference urls to your sources of information about the feature - required)
 
 
-
 Server Language Features
 -----------------------
 
 ### HasOwnProperty
 
-JavaScript has a feature which allows the user to call the HasOwnProperty() method on an object to check whether the object contains an attribute, this method will return a boolean value if the object contains a given attribute that is parsed into the method.
+JavaScript has a feature which allows the user to invoke the '''js HasOwnProperty()''' method which can be called on an object to check whether the object contains an attribute, this method will return a boolean value if the object contains a given attribute that is parsed into the method.
 
 ```js
 var itemID = parseInt(req.params.id)
@@ -66,11 +64,11 @@ var itemID = parseInt(req.params.id)
     res.json(ITEM[itemID])
   }
 ```
-(Explain the problem-this-is-solving/why/benefits/problems - 40ish words - 1 mark)
+The '''js HasOwnProperty()''' method will return true if the given property is an attribute within the object, even if the value is null or undefined, and can be called on most Objects, to see if a given object contains an attribute, which prevents unnessasary object loops to find a given variable.
 
 References
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty
-
+https://stackoverflow.com/questions/9396569/what-is-property-in-hasownproperty-in-javascript
 
 ### Object Functionality
 
