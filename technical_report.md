@@ -20,7 +20,7 @@ Express JS allows the user to use routing to define URLs to separate webpages by
     })
 ```
 
-Routing enables the user to separate and utilize HTTP requests to provide different functionality per request, providing the ability to separate web traffic and provide multi-functionality to a request method. Middleware functions are typically embedded to one or more route handlers, executing when a HTTP request is received by the API.
+Routing enables the user to separate and utilize HTTP requests to provide different functionality per request,separating web traffic and providing multi-functionality to a request method. ???? Middleware functions are typically embedded to one or more route handlers, executing when a HTTP request is received by the API.
 
 References
 https://expressjs.com/en/guide/routing.html
