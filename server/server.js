@@ -1,6 +1,5 @@
 const express = require('express')
 var cors = require('cors');
-const { body } = require('express-validator');
 const app = express()
 const port = 8000
 
@@ -107,7 +106,7 @@ app.delete('/item/:id', (req,res) => {
   })
 
   ///Allows CORS all routes
-app.options('*', cors())
+app.use('*', cors())
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
