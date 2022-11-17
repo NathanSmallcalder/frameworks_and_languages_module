@@ -90,7 +90,7 @@ Client Framework Features
 ### Data Binding
 
 (Technical description of the feature - 40ish words - 1 mark)
-Vue uses A DOM-based templating implementation, meaning that variables declared in JavaScipt can be parsed and displayed as HTML elements
+Vue uses A Document Object Model based templating implementation, meaning that variables declared in JavaScipt can be parsed and displayed as HTML elements by syncing the  to the JavaScript DOM.
 
 (A code block snippet example demonstrating the feature - 1 mark)
 (Explain the problem-this-is-solving/why/benefits/problems - 40ish words - 1 mark)
