@@ -148,6 +148,12 @@ const new_item_element = () => document.querySelector(`[data-page="items"] li`).
 ```
 CloneNode() is used in the solution to render items, this can cause potentially duplicate element IDs within the data model if the data is not modified with correct values before being displayed in HTML.
 
+incosistannt ids
+risk of contamination
+dangerous pattern 
+frameworks will allow for no ids (Data Binding)
+difficult debug
+
 https://developer.mozilla.org/en-US/docs/Web/API/Node/cloneNode
 
 ### Lack of Middleware?

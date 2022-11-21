@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8" />
 	<link id="favicon" rel="shortcut icon" type="image/png" href="data:image/png;base64,....==" />
-	<title>Item App</title>
+	<title>freecycle</title>
 	<style>
 		
 	</style>
@@ -11,82 +11,88 @@
 	<!-- <script src="vue.js"></script> -->
 </head>
 <body>
-	<h1>Item App</h1>
+	<h1>freecycle</h1>
 	<div id="app">
-		<button data-action="updateItem" @click="updateItem">updateItem</button>
-		<h2>Attend</h2>
-		<form @submit.prevent="addItem">
-			<input name="name" v-model="item.user_id" placeholder="user_id">
-			<input name="notes" v-model="item.keywords" placeholder="keywords">
-			<input name="name" v-model="item.description" placeholder="description">
-			<input name="notes" v-model="item.image" placeholder="image">
-			<input name="name" v-model="item.lat" placeholder="lat">
-			<input name="notes" v-model="item.lon" placeholder="lon">
-			<button data-action="addItem">Add Item</button>
+		<form @submit.prevent="create_item" data-action="user_id">
+			<input name="user_id" v-model="item.user_id" placeholder="user_id">
+			<input name="keywords" v-model="item.keywords" placeholder="keywords">
+			<input name="description" v-model="item.description" placeholder="description">
+			<input name="image" v-model="item.image" placeholder="image">
+			<input name="lat" v-model="item.lat" placeholder="lat">
+			<input name="lon" v-model="item.lon" placeholder="lon">
+			<button data-action="create_item">submit</button>
 		</form>
-		<span>{{urlAPI}}</span>
 
 		<h2>Responses</h2>
-		<span>{{itemsList}}</span>
 		<ul>
-			<li v-for="item in itemsList">
-					<span>{{item.id}}</span>
-					<span>{{item.user_id}}</span>
-					<span>{{item.keywords}}</span>
-					<span>{{item.description}}</span>
-					<span>{{item.image}}</span>
-					<span>{{item.lat}}</span>
-					<span>{{item.lon}}</span>
-					<button data-action="delete" @click="deleteItem(item.id)">Remove</button>
+			<li v-for="item in items">
+				<span>{{item.id}}</span>
+				<span>{{item.user_id}}</span>
+				<span>{{item.keywords}}</span>
+				<span>{{item.description}}</span>
+				<span>{{item.image}}</span>
+				<span>{{item.lat}}</span>
+				<span>{{item.lon}}</span>
+				<span>{{item.date_from}}</span>
+				<span>{{item.date_to}}</span>
+				<button @click="deleteItem(item.id)" data-field="id" data-action="deleteItem(item.id)"></button>Delete</button>
 				</li>
 			</li>
 		</ul>
 
 	</div>
 <script type="module">
+
+	const { createApp } = Vue
+	const DEFAULT_API = '/api/v1';
 	const urlParams = new URLSearchParams(window.location.search);
-	const urlAPI = (urlParams.get('api') || '/api/v1').replace(/\/$/, '');
-	const RootComponent = {
-	  data() {
+	const urlAPI = (urlParams.get('api') || DEFAULT_API).replace(/\/$/, '');
+
+createApp({
+    data() {
 		return {
 			urlAPI,
 			item: {
-				user_id: '',
-				keywords: '',
-				description: '',
-				image:'',
-				lat:'',
-				lon:'',
+                id: '',
+                user_id: '',
+                keywords: '',
+                description: '',
+                image: '',
+                lat: '',
+                lon: '',
+                date_from: '',
+                date_to:'',
 			},
-			itemsList:[],
+			items:[]
 		}
 	},
 	  created() {
 		this.clearInput()
-		this.updateItem()
+		this.getItem()
 	  },
 	  methods: {
-		updateItem() {
+		getItem() {
 			fetch(`${urlAPI}/items`, {
 				method:'GET'
 			})
 				.then(response => response.json())
-				.then(data => this.itemList = data)
+				.then(data => this.items = data)
 			.catch(err => console.error(err))
 		},
 		clearInput() {
-			this.item = {...this.item, ...{
-				user_id:'',
-				keywords: '',
-				description:'' ,
-				image:'',
-				lat: '',
-				lon:'',
-				date_from:'',
-				date_to:''
-			}}
+           this.item = {...this.item, ...{
+                id: Math.random(),
+                user_id: '',
+                keywords: '',
+                description: '',
+                image: '',
+                lat: '',
+                lon: '',
+                date_from: Date(),
+                date_from: Date()
+            }}
 		},
-		addItem() {
+		create_item() {
 			fetch(`${urlAPI}/item`, {
 				method: 'POST',
 				headers: {'Content-Type': 'application/json'},
@@ -94,20 +100,19 @@
 			})
 				.then(response => response.json())
 				.then(()=>this.clearInput())
-				.then(()=>this.updateItem())
+				.then(()=>this.getItem())
 			.catch(err => console.error(err));
 		},
-		deleteItem(id) {
-			fetch(`${urlAPI}/item/${id}`, {
-				method: 'DELETE',
-			})
-				.then(()=>this.updateItem())
-			.catch(err => console.error(err));
-		}
-	  },
-	}
-	const app = Vue.createApp(RootComponent)
-	const vm = app.mount('#app')
+        deleteItem(id){
+            fetch(`${urlAPI}/item/${id}`, {
+                method: 'DELETE',
+            })
+            .then(()=>this.getItem())
+        .catch(err => console.error(err));
+        }
+    }
+    }).mount('#app')
+
 </script>
 
 </body>

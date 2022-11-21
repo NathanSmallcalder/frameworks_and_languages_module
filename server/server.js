@@ -5,6 +5,9 @@ const port = 8000
 
 app.use(express.json());
 
+app.use(cors({
+  methods: ['GET','POST','DELETE','OPTIONS']
+}))
 ITEM = {
   1: {
     "id": 1,
@@ -80,7 +83,6 @@ app.get('/items', (req,res) => {
       }
     }
     }
-    console.log(ItemList[0])
     res.status(200).json(ItemList)
 })
 
@@ -101,16 +103,20 @@ app.get('/', (req, res) => {
 app.delete('/item/:id', (req,res) => {
   var itemID = parseInt(req.params.id)
   if(ITEM.hasOwnProperty(itemID)){
+    console.log("DELETED")
     delete ITEM[itemID]
     res.status(204).send("Ok")
   }
   else{
+    console.log("Not")
     res.status(404).send("Item not found")
   }  
   })
 
   ///Allows CORS all routes
 app.use('*', cors())
+
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
