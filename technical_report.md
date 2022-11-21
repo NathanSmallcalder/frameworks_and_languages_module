@@ -89,13 +89,14 @@ Client Framework Features
 
 ### Data Binding
 
-(Technical description of the feature - 40ish words - 1 mark)
-Vue uses A Document Object Model based templating implementation, meaning that variables declared in JavaScipt are synced with the DOM and can be parsed and displayed as HTML elements by using the ```{{ msg }}``` syntax, the variable will be automatically updated if it is maniplauted in the JavaScript.
+Vue uses A Document Object Model based templating implementation, meaning that variables declared in JavaScript are synced with the DOM and can be parsed and displayed as HTML elements by using the ```{{  }}``` syntax, the variable will be automatically updated if it is manipulated in the JavaScript.
 
-(A code block snippet example demonstrating the feature - 1 mark)
+```js
+<span>Message: {{ msg }}</span>
+```
 
 (Explain the problem-this-is-solving/why/benefits/problems - 40ish words - 1 mark)
-Data binding allows for a sycronization of variables, which is 
+Data binding allows for a synchronization of variables, which is 
 
 References
 https://medium.com/js-dojo/exploring-vue-js-reactive-two-way-data-binding-da533d0c4554
@@ -108,6 +109,8 @@ https://v1.vuejs.org/guide/syntax.html
 (Explain the problem-this-is-solving/why/benefits/problems - 40ish words - 1 mark)
 (Provide reference urls to your sources of information about the feature - required)
 
+References
+https://vuejs.org/guide/essentials/event-handling.html#listening-to-events
 
 ### (name of Feature 3)
 

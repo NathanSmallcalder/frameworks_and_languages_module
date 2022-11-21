@@ -3,143 +3,87 @@
 <head>
 	<meta charset="utf-8" />
 	<link id="favicon" rel="shortcut icon" type="image/png" href="data:image/png;base64,....==" />
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-	<title>Items</title>
+	<title>Item App</title>
 	<style>
+		
 	</style>
+	<script src="https://unpkg.com/vue@next"></script> <!-- https://v3.vuejs.org/guide/installation.html#cdn -->
+	<!-- <script src="vue.js"></script> -->
 </head>
 <body>
-	<!---Nav Bar-->
-	<nav class="navbar navbar-expand-lg bg-light">
-		<div class="container-fluid">
-		  <a class="navbar-brand" href="#">Item</a>
-		  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		  </button>
-		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-			  <li class="nav-item">
-				<a class="nav-link active" aria-current="page" href="#">Home</a>
-			  </li>
-			  <li class="nav-item">
-				<a class="nav-link" href="#">Link</a>
-			  </li>
-			  </li>
-			  <li class="nav-item">
-				<a class="nav-link disabled">Disabled</a>
-			  </li>
-			</ul>
-			<form class="d-flex" role="search">
-			  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-			  <button class="btn btn-outline-success" type="submit">Search</button>
-			</form>
-		  </div>
-		</div>
-	  </nav>
-	  <div>
-	  <form>
-		<div class="mb-3">
-		  <label for="user_id" class="form-label">UserID</label>
-		  <input type="user_id" class="form-control" id="user_id" aria-describedby="emailHelp">
-		</div>
-		<div class="mb-3">
-		  <label for="keywords" class="form-label">keywords</label>
-		  <input type="text" class="form-control" id="keywords">
-		</div>
-		<div class="mb-3">
-			<label for="image" class="form-label">image</label>
-			<input type="text" class="form-control" id="image">
-		  </div>
+	<h1>Item App</h1>
+	<div id="app">
+		<button data-action="updateItem" @click="updateItem">updateItem</button>
+		<h2>Attend</h2>
+		<form @submit.prevent="addItem">
+			<input name="name" v-model="item.user_id" placeholder="user_id">
+			<input name="notes" v-model="item.keywords" placeholder="keywords">
+			<input name="name" v-model="item.description" placeholder="description">
+			<input name="notes" v-model="item.image" placeholder="image">
+			<input name="name" v-model="item.lat" placeholder="lat">
+			<input name="notes" v-model="item.lon" placeholder="lon">
+			<button data-action="addItem">Add Item</button>
+		</form>
+		<span>{{urlAPI}}</span>
 
-		<div class="mb-3"></div>
-		  <label for="description" class="form-label">Description</label>
-		  <input type="description" class="form-control" id="description">
-		</div>
-
-		<div class="mb-3"></div>
-			<label for="lat" class="form-label">lat</label>
-			<input type="lat" class="form-control" id="lat">
-	  	</div>
-
-		<div class="mb-3"></div>
-		  <label for="lon" class="form-label">lon</label>
-		  <input type="lon" class="form-control" id="lon">
-		</div>
-
-		<button type="submit" @click="span()">Submit</button>
-	  </form>
-
-		  <div class = "medium-6 cell">
-			<h2>Items</h2>
-		</div>
-		
+		<h2>Responses</h2>
+		<span>{{itemsList}}</span>
 		<ul>
-			<li v-for="item in items">
-				<div class="card" style="width: 250px;">
-					<div class="card-divider">
-					 Item
-					</div>
-					<div>
-						item.lat
-					</div>
-					<img src="">
-					<div class="card-section">
-					  <button  @click ="deleteItem()" onclick="deleteItem('1')">Remove</button>
-				</div>
+			<li v-for="item in itemsList">
+					<span>{{item.id}}</span>
+					<span>{{item.user_id}}</span>
+					<span>{{item.keywords}}</span>
+					<span>{{item.description}}</span>
+					<span>{{item.image}}</span>
+					<span>{{item.lat}}</span>
+					<span>{{item.lon}}</span>
+					<button data-action="delete" @click="deleteItem(item.id)">Remove</button>
+				</li>
 			</li>
 		</ul>
-	</div>
-	<p>Message: <span v-html="msg"></span></p>
-</div>
 
+	</div>
 <script type="module">
-	const DEFAULT_API = "?api=";
- 	const urlParams = new URLSearchParams(window.location.search);
- 	const urlAPI = (urlParams.get('api') || DEFAULT_API).replace(/\/$/, '');
-	
-	//const urlAPI = "https://8000-nathansmall-frameworksa-vgmf9qxtin7.ws-eu75.gitpod.io"
+	const urlParams = new URLSearchParams(window.location.search);
+	const urlAPI = (urlParams.get('api') || '/api/v1').replace(/\/$/, '');
 	const RootComponent = {
 	  data() {
 		return {
+			urlAPI,
 			item: {
-				id: '',
 				user_id: '',
 				keywords: '',
-				image:'',
 				description: '',
-				lat: '',
-				lon: '',
-				date_from: '',
-				date_to:''
+				image:'',
+				lat:'',
+				lon:'',
 			},
-			items:[],
+			itemsList:[],
 		}
-	  },
+	},
 	  created() {
 		this.clearInput()
 		this.updateItem()
-		this.debug()
-	  },
-	  components: {
 	  },
 	  methods: {
 		updateItem() {
 			fetch(`${urlAPI}/items`, {
+				method:'GET'
 			})
 				.then(response => response.json())
-				.then(json => {this.items = json})
+				.then(data => this.itemList = data)
 			.catch(err => console.error(err))
 		},
 		clearInput() {
 			this.item = {...this.item, ...{
-				id: undefined,
-				notes: undefined,
-				image:undefined,
-				description: undefined,
-				lat:undefined,
-				lon:undefined
+				user_id:'',
+				keywords: '',
+				description:'' ,
+				image:'',
+				lat: '',
+				lon:'',
+				date_from:'',
+				date_to:''
 			}}
 		},
 		addItem() {
@@ -154,23 +98,20 @@
 			.catch(err => console.error(err));
 		},
 		deleteItem(id) {
-			etch(`${urlAPI}/item/${id}`, {
+			fetch(`${urlAPI}/item/${id}`, {
 				method: 'DELETE',
 			})
 				.then(()=>this.updateItem())
 			.catch(err => console.error(err));
 		}
 	  },
-	  span() {
-		console.log(urlAPI)
-    return <span> urlAPI </span>
-   	}
-} 
+	}
+	const app = Vue.createApp(RootComponent)
 	const vm = app.mount('#app')
-	
 </script>
-<template>
-	<p>Message: {{ urlParams }}</p>
-</template>
+
 </body>
 </html>
+
+
+

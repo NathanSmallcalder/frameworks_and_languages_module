@@ -51,6 +51,8 @@ app.post('/item', (req,res) => {
       date_from: date ,
       date_to: date
     }
+    //console.log("Added")
+    console.log(ITEM[newId])
     res.status(201).json(ITEM[newId])
   }
     else {   
@@ -61,12 +63,13 @@ app.post('/item', (req,res) => {
 app.get('/items', (req,res) => {
   var id = req.query.user_id;
   var obj;
-  console.log(id)
   ItemList = []
+  console.log("called")
   for (const value of Object.values(ITEM)) {
     ItemList.push(value)
   }
   if(req.query.user_id){
+    print(ItemList)
     ItemList=[]
     for (const value of Object.values(ITEM))
     {
@@ -77,6 +80,7 @@ app.get('/items', (req,res) => {
       }
     }
     }
+    console.log(ItemList[0])
     res.status(200).json(ItemList)
 })
 
