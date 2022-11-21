@@ -141,12 +141,16 @@ Client Language Features
 Critique of Server/Client prototype
 ---------------------
 
-### (name of Issue 1)
+### CloneNode
 
-(A code snippet example demonstrating the feature - 1 mark)
-(Explain why this pattern is problematic - 40ish words 1 mark)
+```js		
+const new_item_element = () => document.querySelector(`[data-page="items"] li`).cloneNode(true);
+```
+CloneNode() is used in the solution to render items, this can cause potentially duplicate element IDs within the data model if the data is not modified with correct values before being displayed in HTML.
 
-### (name of Issue 2)
+https://developer.mozilla.org/en-US/docs/Web/API/Node/cloneNode
+
+### Lack of Middleware?
 
 (A code snippet example demonstrating the feature - 1 mark)
 (Explain why this pattern is problematic - 40ish words 1 mark)
