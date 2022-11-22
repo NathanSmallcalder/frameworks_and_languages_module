@@ -6,17 +6,12 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 	<title>freecycle</title>
 	<style>
-		.card .card-image,
-			.card .card-image .image img {
-			height: 200px;
-			width:50px;
-			}
 	</style>
 	<script src="https://unpkg.com/vue@next"></script> <!-- https://v3.vuejs.org/guide/installation.html#cdn -->
 	<!-- <script src="vue.js"></script> -->
 </head>
 <body>
-	<nav class="navbar" role="navigation" aria-label="main navigation">
+	<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
 		<div class="navbar-brand">
 			<a class="navbar-item">
 				FreeCycle
@@ -30,36 +25,76 @@
 		  </a>
 		</div>
 	  </nav>
-	<h1>freecycle</h1>
+	<div class = "px-5" >
+		<p class="title is-2">Freecycle</p>
+		<p class="subtitle is-3">Add Item</p>
 	<div id="app">
 		<form @submit.prevent="create_item" data-action="user_id">
-			<input name="user_id" v-model="item.user_id" placeholder="user_id">
-			<input name="keywords" v-model="item.keywords" placeholder="keywords">
-			<input name="description" v-model="item.description" placeholder="description">
-			<input name="image" v-model="item.image" placeholder="image">
-			<input name="lat" v-model="item.lat" placeholder="lat">
-			<input name="lon" v-model="item.lon" placeholder="lon">
-			<button data-action="create_item">submit</button>
+			<div class="columns is-multiline">
+				<div class="column is-one-quarter">
+					<label class="label">user_id</label>
+					<input class="input is-rounded" name="user_id" v-model="item.user_id" placeholder="user_id">
+				</div>
+				<div class="column is-one-quarter">
+					<label class="label">keywords</label>
+					<input class="input is-rounded" name="keywords" v-model="item.keywords" placeholder="keywords">
+				</div>
+				<div class="column is-one-quarter">
+					<label class="label">description</label>
+					<input class="input is-rounded"name="description" v-model="item.description" placeholder="description">
+				</div>
+			</div>
+			<div class="columns is-multiline">
+				<div class="column is-one-quarter">
+					<label class="label">image</label>
+					<input class="input is-rounded"name="image" v-model="item.image" placeholder="image">
+				</div>
+				<div class="column is-one-quarter">
+					<label class="label">lat</label>
+					<input class="input is-rounded" name="lat" v-model="item.lat" placeholder="lat">
+				</div>
+				<div class="column is-one-quarter">
+					<label class="label">lon</label>
+					<input class="input is-rounded" name="lon" v-model="item.lon" placeholder="lon">
+				</div>
+			</div>
+			<div class = "mb-10">
+				<button class = "button is-primary" data-action="create_item">Submit</button>
+			</div>
 		</form>
-		<div>
-			<h1>Items</h1>
-		</div>
+		<div class = "mr-0 pt-6">
         <ul>
+			<div class="columns is-multiline">
             <li v-for="item in items">
-              <span data-field="id">{{item.id}}</span>
-              <span>{{item.user_id}}</span>
-              <span>{{item.keywords}}</span>
-              <span>{{item.description}}</span>
-              <span>{{item.image}}</span>
-              <span>{{item.lat}}</span>
-              <span>{{item.lon}}</span>
-              <span>{{item.date_from}}</span>
-              <span>{{item.date_to}}</span>
-              <button @click="deleteItem(item.id)" data-action="delete">Delete</button>
+				<div class="card">
+					<div class="card-content">
+					  <div class="media">
+						<div class="media-left">
+						  <figure class="image is-96x96">
+							<img :src="item.image" alt="Placeholder image">
+						  </figure>
+						</div>			  
+					  <div class="content">
+						<p class="title is-4" data-field="id">UserID: {{item.user_id}}</p>
+						<p> ID: {{item.id}}</p>
+						<p> keywords: {{item.keywords}}</p>
+						<p> description: {{item.description}}</p>
+						<p> lat: {{item.lat}}</p>
+						<p> lon: {{item.lon}}</p>
+						<p>{{item.date_from}}</p>
+					  </div>
+					  </div>
+					  <button class="button is-danger" @click="deleteItem(item.id)" data-action="delete">Delete</button>
+					</div>
+				  </div>
+				</div>
             </li>
           </ul>
+		</div>
 		<!---https://stackoverflow.com/questions/48303637/bulma-why-all-columns-are-on-one-line --->
 	</div>
+	</div>
+
 <script type="module">
 
 	const { createApp } = Vue
@@ -126,7 +161,10 @@ createApp({
             .then(()=>this.getItem())
         .catch(err => console.error(err));
         }
-    }
+    },
+	imageClass(){
+		return item.image
+	}
     }).mount('#app')
 
 </script>
