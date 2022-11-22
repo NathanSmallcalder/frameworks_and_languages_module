@@ -3,14 +3,33 @@
 <head>
 	<meta charset="utf-8" />
 	<link id="favicon" rel="shortcut icon" type="image/png" href="data:image/png;base64,....==" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 	<title>freecycle</title>
 	<style>
-		
+		.card .card-image,
+			.card .card-image .image img {
+			height: 200px;
+			width:50px;
+			}
 	</style>
 	<script src="https://unpkg.com/vue@next"></script> <!-- https://v3.vuejs.org/guide/installation.html#cdn -->
 	<!-- <script src="vue.js"></script> -->
 </head>
 <body>
+	<nav class="navbar" role="navigation" aria-label="main navigation">
+		<div class="navbar-brand">
+			<a class="navbar-item">
+				FreeCycle
+			  </a>
+		  </a>
+	  
+		  <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+			<span aria-hidden="true"></span>
+			<span aria-hidden="true"></span>
+			<span aria-hidden="true"></span>
+		  </a>
+		</div>
+	  </nav>
 	<h1>freecycle</h1>
 	<div id="app">
 		<form @submit.prevent="create_item" data-action="user_id">
@@ -22,24 +41,24 @@
 			<input name="lon" v-model="item.lon" placeholder="lon">
 			<button data-action="create_item">submit</button>
 		</form>
-
-		<h2>Responses</h2>
-		<ul>
-			<li v-for="item in items">
-				<span>{{item.id}}</span>
-				<span>{{item.user_id}}</span>
-				<span>{{item.keywords}}</span>
-				<span>{{item.description}}</span>
-				<span>{{item.image}}</span>
-				<span>{{item.lat}}</span>
-				<span>{{item.lon}}</span>
-				<span>{{item.date_from}}</span>
-				<span>{{item.date_to}}</span>
-				<button @click="deleteItem(item.id)" data-field="id" data-action="deleteItem(item.id)"></button>Delete</button>
-				</li>
-			</li>
-		</ul>
-
+		<div>
+			<h1>Items</h1>
+		</div>
+        <ul>
+            <li v-for="item in items">
+              <span data-field="id">{{item.id}}</span>
+              <span>{{item.user_id}}</span>
+              <span>{{item.keywords}}</span>
+              <span>{{item.description}}</span>
+              <span>{{item.image}}</span>
+              <span>{{item.lat}}</span>
+              <span>{{item.lon}}</span>
+              <span>{{item.date_from}}</span>
+              <span>{{item.date_to}}</span>
+              <button @click="deleteItem(item.id)" data-action="delete">Delete</button>
+            </li>
+          </ul>
+		<!---https://stackoverflow.com/questions/48303637/bulma-why-all-columns-are-on-one-line --->
 	</div>
 <script type="module">
 
@@ -76,20 +95,17 @@ createApp({
 				method:'GET'
 			})
 				.then(response => response.json())
-				.then(data => this.items = data)
+				.then(json => this.items = json)
 			.catch(err => console.error(err))
 		},
 		clearInput() {
            this.item = {...this.item, ...{
-                id: Math.random(),
                 user_id: '',
                 keywords: '',
                 description: '',
                 image: '',
                 lat: '',
                 lon: '',
-                date_from: Date(),
-                date_from: Date()
             }}
 		},
 		create_item() {

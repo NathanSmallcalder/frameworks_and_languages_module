@@ -36,10 +36,10 @@ ITEM = {
 app.post('/item', (req,res) => {
   var newId = Object.keys(ITEM).length  + 1
   var date = new Date().toJSON().slice(0,10)
-  ///Implement Improved ID method???
   if(ITEM.hasOwnProperty(newId)){
     newId = newId + 1
   }
+
   ///Checking that key fields are not null
   if(req.body.user_id && req.body.keywords && req.body.description 
     && req.body.lat && req.body.lon !== ""){
@@ -67,12 +67,10 @@ app.get('/items', (req,res) => {
   var id = req.query.user_id;
   var obj;
   ItemList = []
-  console.log("called")
   for (const value of Object.values(ITEM)) {
     ItemList.push(value)
   }
   if(req.query.user_id){
-    print(ItemList)
     ItemList=[]
     for (const value of Object.values(ITEM))
     {
