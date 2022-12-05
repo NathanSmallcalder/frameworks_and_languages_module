@@ -5,9 +5,14 @@ const port = 8000
 
 app.use(express.json());
 
+///Enable Cors
 app.use(cors({
   methods: ['GET','POST','DELETE','OPTIONS']
 }))
+///Allows CORS all routes
+app.use('*', cors())
+
+//Item Store - example items
 ITEM = {
   1: {
     "id": 1,
@@ -33,13 +38,13 @@ ITEM = {
   },
 }
 
+///POST item
 app.post('/item', (req,res) => {
   var newId = Object.keys(ITEM).length  + 1
   var date = new Date().toJSON().slice(0,10)
   if(ITEM.hasOwnProperty(newId)){
     newId = newId + 1
   }
-
   ///Checking that key fields are not null
   if(req.body.user_id && req.body.keywords && req.body.description 
     && req.body.lat && req.body.lon !== ""){
@@ -54,8 +59,6 @@ app.post('/item', (req,res) => {
       date_from: date ,
       date_to: date
     }
-    //console.log("Added")
-    console.log(ITEM[newId])
     res.status(201).json(ITEM[newId])
   }
     else {   
@@ -63,6 +66,9 @@ app.post('/item', (req,res) => {
     }
 })
 
+///GET
+//Creates temp Array to push individual dictionary item too
+//If Query item then clear array and find the queried item
 app.get('/items', (req,res) => {
   var id = req.query.user_id;
   var obj;
@@ -84,6 +90,9 @@ app.get('/items', (req,res) => {
     res.status(200).json(ItemList)
 })
 
+///Get item by ID
+//Parse itemID as int
+//Search data store for itemID
 app.get('/item/:id' , (req,res) => {
   var itemID = parseInt(req.params.id)
   if(ITEM.hasOwnProperty(itemID)){
@@ -95,9 +104,10 @@ app.get('/item/:id' , (req,res) => {
 })
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.send("Hello World")
 })
 
+///DELETE item
 app.delete('/item/:id', (req,res) => {
   var itemID = parseInt(req.params.id)
   if(ITEM.hasOwnProperty(itemID)){
@@ -106,22 +116,15 @@ app.delete('/item/:id', (req,res) => {
     res.status(204).send("Ok")
   }
   else{
-    console.log("Not")
     res.status(404).send("Item not found")
   }  
   })
 
-  ///Allows CORS all routes
-app.use('*', cors())
-
-
-
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
-
 })
-
 process.on('SIGINT', function() {process.exit()})
 
 // https://livecodestream.dev/post/everything-you-should-know-about-javascript-dictionaries/
 // https://stackoverflow.com/questions/46374993/find-a-value-in-a-dictionary-with-a-certain-property
+// Collaborated with Kieran Rutter https://github.com/theKIEgit
