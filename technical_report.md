@@ -56,6 +56,7 @@ Server Language Features
 ## Reflection
 
 JavaScript uses reflection, which enables objects to look at owned properties and methods, this gives an advantage over using a static language, item properties can be stored dynamically, and can be accessed easily by using the ```HasOwnProperty()``` method which can be called on an object to check whether the object contains an attribute, enabling for a flexible solution rather than compiling errors using a static language.
+
 ```js
 var itemID = parseInt(req.params.id)
   if(ITEM.hasOwnProperty(itemID)){
@@ -92,8 +93,8 @@ Client Framework Features
 Vue uses A Document Object Model based templating implementation, meaning that variables declared in JavaScript are synced with the DOM and can be parsed and displayed as HTML elements by using the ```{{  }}``` syntax, the variable will be automatically updated if it is manipulated in the JavaScript. 
 ## need to edit
 
-```js
-<span>Message: {{ msg }}</span>
+```html
+<span>Message: {{ msg }} </span>
 ```
 
 (Explain the problem-this-is-solving/why/benefits/problems - 40ish words - 1 mark)
@@ -106,13 +107,14 @@ https://v1.vuejs.org/guide/syntax.html
 ## Event Binding
 
 (Technical description of the feature - 40ish words - 1 mark)
+Vue gives extra functionality to the binding of methods, instead of binding to a method name, methods can be invoked from an inline handler
 (A code block snippet example demonstrating the feature - 1 mark)
 (Explain the problem-this-is-solving/why/benefits/problems - 40ish words - 1 mark)
 (Provide reference urls to your sources of information about the feature - required)
 
 References<br>
-https://vuejs.org/guide/essentials/event-handling.html#listening-to-events
-
+https://vuejs.org/guide/essentials/event-handling.html#listening-to-events<br>
+https://vuejs.org/guide/essentials/event-handling.html#accessing-event-argument-in-inline-handlers
 ## (name of Feature 3)
 
 (Technical description of the feature - 40ish words - 1 mark)
@@ -147,7 +149,7 @@ Critique of Server/Client prototype
 ```js		
 const new_item_element = () => document.querySelector(`[data-page="items"] li`).cloneNode(true);
 ```
-CloneNode() is used in the solution to render items, this can lead to inconsistent element IDs and raise a risk of contaminating object IDs with the duplicate value. 
+CloneNode() is used in the solution to render items, this can lead to inconsistent element IDs and raise a risk of contaminating object IDs with the duplicate value. Using a framework can benefit the way items as generated as most frameworks use data binding, which binds the data together at the source.
 
 frameworks will allow for no ids (Data Binding)
 difficult debug
@@ -187,9 +189,7 @@ def serve_app(func_app, port, host=''):
                     conn.send(encode_response(response))
 ```
 
-(Explain why this pattern is problematic - 40ish words 1 mark)
-The only way to turn the server off is by unplugging it?
-could lead to data loss
+To serve the app, the prototype uses While True:, which does keep the server active, but there is no function to stop the loop running, which means that the server can only be stopped by unplugging or terminating the program, which could lead to data loss. 
 
 Future Technology Suggestions
 -----------------------------
@@ -204,9 +204,7 @@ https://martinfowler.com/articles/serverless.html<br>
 
 ## NoSQL
 
-NoSQL refers to non-relational data storage system which does not require a fixed data model, allowing for more dynamic data storage for scenarios that require a extensive amount of data storage.
-
-NoSQL provides a loose and flexible schema which can scale by storing grouped values against a singular key. However, NoSQL lacks a standardized language, depending on the type of NoSQL database used, the language and syntax used will be different, which could make initial development challenging.
+NoSQL refers to non-relational data storage system which does not require a fixed data model, allowing for more dynamic data storage for scenarios that require a extensive amount of data storage. NoSQL provides a loose and flexible schema which can scale by storing grouped values against a singular key. However, NoSQL lacks a standardized language, depending on the type of NoSQL database used, the language and syntax used will be different, which could make initial development challenging.
 
 References <br>
 https://www.mongodb.com/nosql-explained<br>
@@ -214,9 +212,7 @@ https://www.datastax.com/blog/sql-vs-nosql-pros-cons<br>
 
 ## Static Generated Web Page
 
-Static site generator can be used to generate full HTML pages based on templates using pre-rendered layouts which are cached and served ahead of time to the user via a content delivery network, which pre-renders the site server side.
-
-Static site generator removes the need to render the site per GET request, instead the site is rendered once server-side, requiring no dependencies, and returned to the user ahead of time.
+Static site generator can be used to generate full HTML pages based on templates using pre-rendered layouts which are cached and served ahead of time to the user via a content delivery network, which pre-renders the site server side. Static site generator removes the need to render the site per GET request, instead the site is rendered once server-side, requiring no dependencies, and returned to the user ahead of time.
 
 References <br>
 https://www.gatsbyjs.com/docs/glossary/static-site-generator/<br>

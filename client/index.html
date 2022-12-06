@@ -11,6 +11,7 @@
 	<!-- <script src="vue.js"></script> -->
 </head>
 <body>
+	<!---Navbar---->
 	<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
 		<div class="navbar-brand">
 			<a class="navbar-item">
@@ -29,6 +30,7 @@
 		<p class="title is-2">Freecycle</p>
 		<p class="subtitle is-3">Add Item</p>
 	<div id="app">
+		<!---Form---->
 		<form @submit.prevent="create_item" data-action="user_id">
 			<div class="columns is-multiline">
 				<div class="column is-one-quarter">
@@ -64,6 +66,7 @@
 		</form>
 		<div class = "mr-0 pt-6">
         <ul>
+			<!---Cards---->
 			<div class="columns is-multiline">
             <li v-for="item in items">
 				<div class="card">
@@ -75,8 +78,8 @@
 						  </figure>
 						</div>			  
 					  <div class="content">
-						<p class="title is-4" data-field="id">UserID: {{item.user_id}}</p>
-						<p> ID: {{item.id}}</p>
+						<p class="title is-4" data-field="id">ID: {{item.id}}</p>
+						<p> user_id: {{user_id}}</p>
 						<p> keywords: {{item.keywords}}</p>
 						<p> description: {{item.description}}</p>
 						<p> lat: {{item.lat}}</p>
@@ -92,6 +95,7 @@
           </ul>
 		</div>
 		<!---https://stackoverflow.com/questions/48303637/bulma-why-all-columns-are-on-one-line --->
+		<!---https://bulma.io/documentation/-->
 		<!---https://stackoverflow.com/questions/61991427/how-do-i-make-a-horizontal-card-in-bulma-->
 	</div>
 	</div>
@@ -99,13 +103,14 @@
 <script type="module">
 	const { createApp } = Vue
 	const DEFAULT_API = '/api/v1';
+	///Gets Value after ?api=
 	const urlParams = new URLSearchParams(window.location.search);
 	const urlAPI = (urlParams.get('api') || DEFAULT_API).replace(/\/$/, '');
 
 createApp({
     data() {
+		///Item Storage
 		return {
-			urlAPI,
 			item: {
                 id: '',
                 user_id: '',
@@ -120,20 +125,20 @@ createApp({
 			items:[]
 		}
 	},
-	  created() {
+	  created() { //On create clear form and get items
 		this.clearInput()
 		this.getItem()
 	  },
 	  methods: {
 		getItem() {
-			fetch(`${urlAPI}/items`, {
+			fetch(`${urlAPI}/items`, { ///Sends request to retrieve json data from server
 				method:'GET'
 			})
 				.then(response => response.json())
 				.then(json => this.items = json)
 			.catch(err => console.error(err))
 		},
-		clearInput() {
+		clearInput() { ///Clears form
            this.item = {...this.item, ...{
                 user_id: '',
                 keywords: '',
@@ -144,7 +149,10 @@ createApp({
             }}
 		},
 		create_item() {
-			fetch(`${urlAPI}/item`, {
+			// Posts form submitted item to Server
+			//Clears input
+			//Gets Items from server
+			fetch(`${urlAPI}/item`, {  
 				method: 'POST',
 				headers: {'Content-Type': 'application/json'},
 				body: JSON.stringify(this.item),
@@ -154,7 +162,7 @@ createApp({
 				.then(()=>this.getItem())
 			.catch(err => console.error(err));
 		},
-        deleteItem(id){
+        deleteItem(id){ /// Delete item by query id
             fetch(`${urlAPI}/item/${id}`, {
                 method: 'DELETE',
             })
