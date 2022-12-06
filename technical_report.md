@@ -28,7 +28,7 @@ https://expressjs.com/en/starter/basic-routing.html<br>
 
 ## Middleware 
 
-Middleware integrates pre and post processing into the requests and responses methods, allowing a method to be invoked before the client receives a response and after the client returns a response, providing functionality to manipulate response or request objects.???? Middleware functions are typically embedded to one or more route handlers, executing when a HTTP request is received by the API.
+Middleware integrates pre and post processing into the requests and responses methods, allowing a method to be invoked before the client receives a response and after the client returns a response, providing functionality to manipulate response or request objects. Middleware functions are typically embedded to one or more route handlers, executing when a HTTP request is received.
 
 ```js
   var cors = require('cors');
@@ -45,6 +45,7 @@ https://reflectoring.io/express-middleware/
 ## Templating
 
 (Technical description of the feature - 40ish words - 1 mark)
+Templating can be used with in vue to use static files in applications. When running the app, the templating engine updates variables within the file with data from the vue script and converts the template into a html file to be render by the client.
 (A code block snippet example demonstrating the feature - 1 mark)
 (Explain the problem-this-is-solving/why/benefits/problems - 40ish words - 1 mark)
 (Provide reference urls to your sources of information about the feature - required)
@@ -55,7 +56,7 @@ Server Language Features
 
 ## Reflection
 
-JavaScript uses reflection, which enables objects to look at owned properties and methods, this gives an advantage over using a static language, item properties can be stored dynamically, and can be accessed easily by using the ```HasOwnProperty()``` method which can be called on an object to check whether the object contains an attribute, enabling for a flexible solution rather than compiling errors using a static language.
+JavaScript uses reflection, which enables objects to look at owned properties and functions, this gives an advantage over using a static language, item properties can be stored dynamically, and can be accessed easily by using the ```HasOwnProperty()``` function which can be called on an object to check whether the object contains an attribute, enabling for a flexible solution rather than compiling errors using a static language.
 
 ```js
 var itemID = parseInt(req.params.id)
@@ -63,82 +64,126 @@ var itemID = parseInt(req.params.id)
     res.json(ITEM[itemID])
   }
 ```
-The ```HasOwnProperty()``` method will return true if the given property is an attribute within the object, even if the value is null or undefined, and can be called on most Objects, to see if a given object contains an attribute, which prevents unnessasary object loops to find a given variable, or a overcomplicated implementation of a static language.
+The ```HasOwnProperty()``` function will return true if the given property is an attribute within the object, even if the value is null or undefined, and can be called on most Objects, to see if a given object contains an attribute, which prevents unnessasary object loops to find a given variable, or a overcomplicated implementation of a static language.
 
 References <br>
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty<br>
 https://stackoverflow.com/questions/9396569/what-is-property-in-hasownproperty-in-javascript<br>
 https://stackoverflow.com/questions/53170245/what-is-concept-of-reflection-in-javascript
 
-## Object Functionality
+## Mutability 
 
-(Technical description of the feature - 40ish words - 1 mark)
+Objects and Arrays within JavaScript are mutable, after an object or array has been declared its properties or values can be changed. Other variable types in javascript are immutable, once they have been instantiated they can not be changed without re-assigned a new value.
 
 ```js
-for (const value of Object.values(ITEM)) {
-    ItemList.push(value)
-  }
+
 ```
-(Explain the problem-this-is-solving/why/benefits/problems - 40ish words - 1 mark)
-(Provide reference urls to your sources of information about the feature - required)
+Mutable objects prevent the program from re-allocating space on the same variable, enabling the program to alter the variable on demand. However other variables in JS are immutable, when an string is changed, a new string is created which could lead more memory being used.
 
 References<br>
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Object/values
+https://developer.mozilla.org/en-US/docs/Glossary/Mutable <br>
+https://developer.mozilla.org/en-US/docs/Glossary/Immutable <br>
 
 Client Framework Features
 -------------------------
 
-## Data Binding
+## Interpolation
 
-Vue uses A Document Object Model based templating implementation, meaning that variables declared in JavaScript are synced with the DOM and can be parsed and displayed as HTML elements by using the ```{{  }}``` syntax, the variable will be automatically updated if it is manipulated in the JavaScript. 
-## need to edit
+Vue uses Interpolation to insert javascript variables, attributes and raw HTML into HTML code using the```{{  }}``` syntax, which will then display the javascript variable in plaintext, updating when the variable if it is manipulated in the JavaScript. 
 
 ```html
-<span>Message: {{ msg }} </span>
-```
+<div class="content">
+    <p class="title is-4" data-field="id">ID: {{item.id}}</p>
+	<p> user_id: {{user_id}}</p>
+	<p> keywords: {{item.keywords}}</p>
+	<p> description: {{item.description}}</p>
+	<p> lat: {{item.lat}}</p>
+	<p> lon: {{item.lon}}</p>
+	<p>{{item.date_from}}</p>
 
-(Explain the problem-this-is-solving/why/benefits/problems - 40ish words - 1 mark)
-Data binding allows for a synchronization of variables, which is 
+    <p>{{ message.split('').reverse().join('') }}<p>
+    
+</div>
+```
+Interpolation allows for a synchronization of variables, which removes the need for extra functions that re-render variables for HTML. Interpolation also provides extra functionality to evoke Javascript functions and expressions inside of data bindings.
 
 References<br>
 https://medium.com/js-dojo/exploring-vue-js-reactive-two-way-data-binding-da533d0c4554<br>
 https://v1.vuejs.org/guide/syntax.html
 
-## Event Binding
+## List Rendering
 
-(Technical description of the feature - 40ish words - 1 mark)
-Vue gives extra functionality to the binding of methods, instead of binding to a method name, methods can be invoked from an inline handler
-(A code block snippet example demonstrating the feature - 1 mark)
-(Explain the problem-this-is-solving/why/benefits/problems - 40ish words - 1 mark)
-(Provide reference urls to your sources of information about the feature - required)
+Vue supports list rendering in html, which iterates through each item of an object, array or in range of a value, using the v-for syntax. List rendering provides loop functionality within a vue template, which is useful to iterate and display objects within HTML.
+
+```html
+ <li v-for="item in items">
+ 	<p> user_id: {{user_id}}</p>
+	<p> keywords: {{item.keywords}}</p>
+	<p> description: {{item.description}}</p>
+	<p> lat: {{item.lat}}</p>
+	<p> lon: {{item.lon}}</p>
+	<p>{{item.date_from}}</p>
+```
+This prevents the over-engineering of JavaScript functions, to achieve this without Vue, a JavaScript function will have to be constructed which iterates through an item and returns a string which contains HTML and the variable to be displayed onto the HTML page, Vue avoids extra JavaScript function.
 
 References<br>
-https://vuejs.org/guide/essentials/event-handling.html#listening-to-events<br>
-https://vuejs.org/guide/essentials/event-handling.html#accessing-event-argument-in-inline-handlers
-## (name of Feature 3)
+https://v1.vuejs.org/guide/list.html<br>
+https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/Vue_rendering_lists
 
-(Technical description of the feature - 40ish words - 1 mark)
-(A code block snippet example demonstrating the feature - 1 mark)
-(Explain the problem-this-is-solving/why/benefits/problems - 40ish words - 1 mark)
-(Provide reference urls to your sources of information about the feature - required)
+## Methods and Event Handling
 
+Vue gives extra functionality to the binding of method, instead of binding to a method name, methods can be invoked from an inline JavaScript handler. JavaScript is then executed when the vue method is called when a user interacts with an element.
+
+```html
+</div>
+	<button class="button is-danger" @click="deleteItem(item.id)" data-action="delete">Delete</button>
+</div>
+```
+```js
+    methods: {
+            deleteItem(id){ 
+                fetch(`${urlAPI}/item/${id}`, {
+                    method: 'DELETE',
+                })
+            .then(()=>this.getItem())
+        .catch(err => console.error(err));
+        }
+    }
+```
+
+Vue's method handling enables a event to change depending on the programs scenario or prevent a default event, which can be used to prevent reloading a page on a form submission. Key event modifiers can also be used to allow the program to listen to keyboard key inputs.
+
+References<br>
+https://blog.logrocket.com/deep-dive-vue-event-handling/<br>
+https://vuejs.org/guide/essentials/event-handling
 
 Client Language Features
 ------------------------
 
-## (name of Feature 1)
+## IndexOf
 
-(Technical description of the feature - 40ish words - 1 mark)
-(A code block snippet example demonstrating the feature - 1 mark)
-(Explain the problem-this-is-solving/why/benefits/problems - 40ish words - 1 mark)
+IndexOf() can be called on an array to find the specific index of a given parameter which is parsed into the function . The function  uses a linear search on an array and returns the first matched value it finds.
+
+```js
+
+```
+
+IndexOf() allows the program to find a specific occurrence of a value in an array without iterating over the whole array, after the index is found, the object can be accessed using the object's index.
+
 (Provide reference urls to your sources of information about the feature - required)
 
-## (name of Feature 2)
+References<br>
+https://medium.com/@nathanbell09/binary-search-vs-indexof-63651f91acb7
 
-(Technical description of the feature - 40ish words - 1 mark)
+## Prototypical Inheritance
+
+Prototypical inheritance is used to add methods and properties to new objects,providing the ability to reuse properties or methods from a JavaScript object to a new object through reference pointers, allowing methods and properties to be shared,extended to objects.
+
 (A code block snippet example demonstrating the feature - 1 mark)
 (Explain the problem-this-is-solving/why/benefits/problems - 40ish words - 1 mark)
-(Provide reference urls to your sources of information about the feature - required)
+Prototypical inheritance 
+References<br>
+https://www.educative.io/blog/understanding-and-using-prototypal-inheritance-in-javascript<br>
 
 
 Critique of Server/Client prototype
@@ -151,8 +196,6 @@ const new_item_element = () => document.querySelector(`[data-page="items"] li`).
 ```
 CloneNode() is used in the solution to render items, this can lead to inconsistent element IDs and raise a risk of contaminating object IDs with the duplicate value. Using a framework can benefit the way items as generated as most frameworks use data binding, which binds the data together at the source.
 
-frameworks will allow for no ids (Data Binding)
-difficult debug
 References <br>
 https://developer.mozilla.org/en-US/docs/Web/API/Node/cloneNode<br>
 
