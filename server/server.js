@@ -12,9 +12,9 @@ app.use(cors({
 ///Allows CORS all routes
 app.use('*', cors())
 
-//Item Store - example items
+// Item Store - example items
 // https://livecodestream.dev/post/everything-you-should-know-about-javascript-dictionaries/
-// Collaborated with Kieran Rutter https://github.com/theKIEgit
+// @Kieran Rutter https://github.com/theKIEgit
 
 ITEM = {
   1: {
@@ -48,12 +48,12 @@ app.post('/item', (req,res) => {
   newId = 1
   for (const value of Object.values(ITEM))  //https://stackoverflow.com/questions/46374993/find-a-value-in-a-dictionary-with-a-certain-property
   {
-    if (parseInt(value.id) == newId) /// Pushes single item
+    if (parseInt(value.id) == newId) // if id already exists add 1
     {
       newId = newId + 1
     }
     else{
-      
+      ///if value is unique pass
     }
   }
   
@@ -111,7 +111,7 @@ app.get('/item/:id' , (req,res) => {
   var itemID = parseInt(req.params.id)
   /// https://stackoverflow.com/questions/1098040/checking-if-a-key-exists-in-a-javascript-object
   if(ITEM.hasOwnProperty(itemID)){
-    res.json(ITEM[itemID])
+    res.status(200).json(ITEM[itemID])
   }
   else{
     res.status(404).send("Item not found")
