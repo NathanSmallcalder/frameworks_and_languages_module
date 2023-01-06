@@ -170,16 +170,17 @@ IndexOf() can be called on an array to find the specific index of a given parame
 
 IndexOf() allows the program to find a specific occurrence of a value in an array without iterating over the whole array, after the index is found, the object can be accessed using the object's index.
 
-(Provide reference urls to your sources of information about the feature - required)
-
 References<br>
 https://medium.com/@nathanbell09/binary-search-vs-indexof-63651f91acb7
 
 ## Prototypical Inheritance
 
-Prototypical inheritance is used to add methods and properties to new objects,providing the ability to reuse properties or methods from a JavaScript object to a new object through reference pointers, allowing methods and properties to be shared,extended to objects.
+Prototypical inheritance is used to add methods and properties to objects, providing the ability to reuse properties or methods from a JavaScript object to a new object through reference pointers.
 
-(A code block snippet example demonstrating the feature - 1 mark)
+```js
+
+```
+
 (Explain the problem-this-is-solving/why/benefits/problems - 40ish words - 1 mark)
 Prototypical inheritance 
 References<br>
