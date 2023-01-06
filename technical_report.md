@@ -71,25 +71,32 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 https://stackoverflow.com/questions/9396569/what-is-property-in-hasownproperty-in-javascript<br>
 https://stackoverflow.com/questions/53170245/what-is-concept-of-reflection-in-javascript
 
-## Mutability 
+## Mutability and Immutability
 
-Objects and Arrays within JavaScript are mutable, after an object or array has been declared its properties or values can be changed. Other variable types in javascript are immutable, once they have been instantiated they can not be changed without re-assigned a new value.
+Objects and Arrays within JavaScript are mutable, after an object or array has been declared its properties or values can be changed. Other variable types in javascript are immutable, once they have been instantiated they can not be changed without creating a new value.
 
 ```js
-
+    ///Immutable
+    var String1 = "New String";
+    var String2 = String1;
+    String1 = "Variable has been changed";
+    console.log(String1 === String2);
+    //Mutable
 ```
-Mutable objects prevent the program from re-allocating space on the same variable, enabling the program to alter the variable on demand. However other variables in JS are immutable, when an string is changed, a new string is created which could lead more memory being used.
+
+Mutable objects prevent the program from re-allocating space on the same variable, allowing the program to alter the variable when needed. However other variables in JS are immutable, when creating a new variable they all require a new object for each unique value.
 
 References<br>
 https://developer.mozilla.org/en-US/docs/Glossary/Mutable <br>
 https://developer.mozilla.org/en-US/docs/Glossary/Immutable <br>
+https://en.proft.me/2013/11/24/advantages-and-disadvantages-immutable-objects-jav/<br>
 
 Client Framework Features
 -------------------------
 
 ## Interpolation
 
-Vue uses Interpolation to insert javascript variables, attributes and raw HTML into HTML code using the```{{  }}``` syntax, which will then display the javascript variable in plaintext, updating when the variable if it is manipulated in the JavaScript. 
+Vue uses Interpolation to insert javascript variables, attributes and raw HTML into HTML code using the ```{{  }}``` syntax, which will then display the javascript variable in plaintext, updating when the variable if it is manipulated in the JavaScript. 
 
 ```html
 <div class="content">
@@ -165,7 +172,9 @@ Client Language Features
 IndexOf() can be called on an array to find the specific index of a given parameter which is parsed into the function . The function  uses a linear search on an array and returns the first matched value it finds.
 
 ```js
-
+    const NumArray = [1, 2, 3, 4, 5];
+    console.log(NumArray.indexOf(2)); 
+    //Prints Position 1
 ```
 
 IndexOf() allows the program to find a specific occurrence of a value in an array without iterating over the whole array, after the index is found, the object can be accessed using the object's index.
@@ -175,16 +184,17 @@ https://medium.com/@nathanbell09/binary-search-vs-indexof-63651f91acb7
 
 ## Prototypical Inheritance
 
-Prototypical inheritance is used to add methods and properties to objects, providing the ability to reuse properties or methods from a JavaScript object to a new object through reference pointers.
+Instead of using class inheritance, JavaScript uses prototypical inheritance, where an object is a prototype of another object and can be used to add methods and properties to other objects.
 
 ```js
 
 ```
 
-(Explain the problem-this-is-solving/why/benefits/problems - 40ish words - 1 mark)
-Prototypical inheritance 
+Prototypical inheritance allows an object to inherit from multiple different objects, providing the ability to reuse properties or methods from a JavaScript object to a new object through reference pointers.
+
 References<br>
 https://www.educative.io/blog/understanding-and-using-prototypal-inheritance-in-javascript<br>
+<https://www.toptal.com/javascript/es6-class-chaos-keeps-js-developer-up>
 
 
 Critique of Server/Client prototype
