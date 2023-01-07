@@ -45,11 +45,50 @@ https://reflectoring.io/express-middleware/
 ## Templating
 
 (Technical description of the feature - 40ish words - 1 mark)
-Templating can be used with in vue to use static files in applications. When running the app, the templating engine updates variables within the file with data from the vue script and converts the template into a html file to be render by the client.
-(A code block snippet example demonstrating the feature - 1 mark)
-(Explain the problem-this-is-solving/why/benefits/problems - 40ish words - 1 mark)
-(Provide reference urls to your sources of information about the feature - required)
 
+Templating can be used with in vue to serve static files in the application. When running the app, the templating engine instantiates variables within the file with data from the javascript file and converts the template into a html file to be rendered by the client.
+
+```js
+app.get('/home', (req, res) => {
+  let Items = [
+    {"id": 1,
+    "user_id": "user1234",
+    "keywords": ["hammer", "nails", "tools"],
+    "description": "A hammer and nails set",
+    "image": "https://placekitten.com/200/100",
+    "lat": 1.10,
+    "lon": 1.20,
+    "date_from": "2022-11-22T08:22:39.067408",
+    "date_to": "2022-11-22T08:22:39.067408" },
+    {"id": 2,
+    "user_id": "user1234",
+    "keywords": ["hammer", "nails", "tools"],
+    "description": "A hammer and nails set",
+    "image": "https://placekitten.com/200/100",
+    "lat": 1.10,
+    "lon": 1.20,
+    "date_from": "2022-11-22T08:22:39.067408",
+    "date_to": "2022-11-22T08:22:39.067408" },
+  ];
+  res.render('home', { Items: Items });
+});
+```
+
+```
+<h2>Home page</h2>
+
+<ul>
+  <% Items.forEach((item) => { %>
+  <li><%= item.id %></li>
+  <% }); %>
+</ul>
+```
+
+Templating minimizes the code bases and enables variables to be parsed directly into HTML to be viewed by the client, maximizing client side processing. Templating also gives the ability to provide a base template and expand multiple diffrent pages on the original layout, reducing duplicate code.
+
+References <br>
+https://expressjs.com/en/guide/using-template-engines.html<br>
+https://www.tutorialsteacher.com/nodejs/template-engines-for-nodejs
 
 Server Language Features
 -----------------------
@@ -64,6 +103,7 @@ var itemID = parseInt(req.params.id)
     res.json(ITEM[itemID])
   }
 ```
+
 The ```HasOwnProperty()``` function will return true if the given property is an attribute within the object, even if the value is null or undefined, and can be called on most Objects, to see if a given object contains an attribute, which prevents unnessasary object loops to find a given variable, or a overcomplicated implementation of a static language.
 
 References <br>
