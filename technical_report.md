@@ -88,7 +88,8 @@ Templating minimizes the code bases and enables variables to be parsed directly 
 
 References <br>
 https://expressjs.com/en/guide/using-template-engines.html<br>
-https://www.tutorialsteacher.com/nodejs/template-engines-for-nodejs
+https://www.tutorialsteacher.com/nodejs/template-engines-for-nodejs<br>
+https://www.digitalocean.com/community/tutorials/nodejs-express-template-engines
 
 Server Language Features
 -----------------------
