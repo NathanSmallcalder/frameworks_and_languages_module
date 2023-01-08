@@ -1,14 +1,14 @@
 Technical Report
 ================
 
-In this technical report, I will be justifiying the technolgoies used in the implementation of the FreeCycle application, aswell as critiquing the current prototype for the application, proving the need to implement frameworks to improve the software stack.
+In this technical report, I will be describing and justifying the selected technologies used in the implementation of the FreeCycle application, as well as critiquing the current prototype for the application, proving the need to implement frameworks to improve the software stack, as well as outlining future technologies that could benefit future development.
 
 Server Framework Features
 -------------------------
 
 ## Routing
 
-Express JS allows the application to customize an applications endpoints, each endpoint have a handler functions, which are called when a user request that matches the specific URL and method and calls the function.
+Express JS allows the application to customize an application's endpoints, each endpoint can have one or more handler functions, and when a user requests a specific route, the handler functions are executed.
 
 ```js
 app.post('/add', (req, res) =>{
@@ -17,7 +17,8 @@ app.post('/add', (req, res) =>{
     console.log(STORAGE)
     })
 ```
-Routing enables the application to separate HTTP requests to provide different functionality per request,separating web traffic and providing multi-functionality to a request method. 
+
+Routing enables the application to separate HTTP requests to provide different functionality per request or provide multi-functionailty to a singular route,which separates web traffic and can provies routes with multiple features or HTTP request methods. 
 
 References<br>
 https://expressjs.com/en/guide/routing.html<br>
@@ -178,7 +179,7 @@ https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_Jav
 
 Vue gives extra functionality to method binding, instead of binding to a method name, methods can be invoked from an inline JavaScript handler. JavaScript is then executed when the vue method is called when a user interacts with an element.
 
-```html
+```
 </div>
 	<button class="button is-danger" @click="deleteItem(item.id)" data-action="delete">Delete</button>
 </div>
