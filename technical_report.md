@@ -1,7 +1,7 @@
 Technical Report
 ================
 
-In this technical report, I will be describing and justifying the selected technologies used in the implementation of the FreeCycle application, as well as critiquing the current prototype for the application, proving the need to implement frameworks to improve the software stack, as well as outlining future technologies that could benefit future development.
+This technical report will be responsible for describing and justifying the selected technologies used in the implementation of the FreeCycle application, as well as critiquing the current prototype for the application, proving the need to implement frameworks to improve the software stack, as well as outlining future technologies that could benefit future development.
 
 Server Framework Features
 -------------------------
