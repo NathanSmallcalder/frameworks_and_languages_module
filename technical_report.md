@@ -43,7 +43,7 @@ https://reflectoring.io/express-middleware/
 
 ## Templating
 
-Templating can be used in Vue to serve static files in the application. When running the app, the templating engine instantiates variables within the file with data from the javascript file and converts the template into an HTML file to be rendered by the client.
+Templating can be used in Vue to serve static files in the application. When running the app, the templating engine instantiates variables within the file with data from the JavaScript file and converts the template into an HTML file to be rendered by the client.
 
 ```js
 app.get('/home', (req, res) => {
@@ -102,7 +102,7 @@ var itemID = parseInt(req.params.id)
   }
 ```
 
-The ```HasOwnProperty()``` function will return true if the given property is an attribute within the object, even if the value is null or undefined, and can be called on most Objects, to see if a given object contains an attribute, which prevents unnecessary object loops to find a given variable or an overcomplicated implementation of a static language.
+The ```HasOwnProperty()``` function will return true if the given property is an attribute within the object, even if the value is null or undefined, and can be called on most objects, to see if a given object contains an attribute, which prevents unnecessary object loops to find a given variable or an overcomplicated implementation of a static language.
 
 References <br>
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty<br>
@@ -111,7 +111,7 @@ https://stackoverflow.com/questions/53170245/what-is-concept-of-reflection-in-ja
 
 ## Mutability and Immutability
 
-Objects and Arrays within JavaScript are mutable, after an object or array has been declared its properties or values can be changed. Other variable types in javascript are immutable, once they have been instantiated they can not be changed without creating a new value.
+Objects and arrays within JavaScript are mutable, after an object or array has been declared its properties or values can be changed. Other variable types in JavaScript are immutable, once they have been instantiated they can not be changed without creating a new value.
 
 ```js
     ///Immutable
@@ -133,7 +133,7 @@ Client Framework Features
 
 ## Interpolation
 
-Vue uses Interpolation to insert javascript variables, attributes and raw HTML into HTML code using the ```{{  }}``` syntax, which will then display the javascript variable in plaintext, updating when the variable is manipulated in the JavaScript. 
+Vue uses Interpolation to insert JavaScript variables, attributes and raw HTML into HTML code using the ```{{  }}``` syntax, which will then display the JavaScript variable in plaintext, updating when the variable is manipulated in the JavaScript. 
 
 ```html
 <div class="content">
@@ -150,7 +150,7 @@ Vue uses Interpolation to insert javascript variables, attributes and raw HTML i
 </div>
 ```
 
-Interpolation allows for the synchronization of variables, which removes the need for extra functions that re-render variables for HTML. Interpolation also provides extra functionality to invoke Javascript functions and expressions inside of data bindings.
+Interpolation allows for the synchronization of variables, which removes the need for extra functions that re-render variables for HTML. Interpolation also provides extra functionality to invoke JavaScript functions and expressions inside of data bindings.
 
 References<br>
 https://medium.com/js-dojo/exploring-vue-js-reactive-two-way-data-binding-da533d0c4554<br>
