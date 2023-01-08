@@ -119,7 +119,6 @@ Objects and Arrays within JavaScript are mutable, after an object or array has b
     var String2 = String1;
     String1 = "Variable has been changed";
     console.log(String1 === String2);
-    //Mutable
 ```
 
 Mutable objects prevent the program from reallocating space on the same variable, allowing the program to alter the variable when needed. However other variables in JS are immutable, when creating a new variable they all require a new object for each unique value, taking up space within the program.
