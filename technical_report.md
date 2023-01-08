@@ -44,8 +44,6 @@ https://reflectoring.io/express-middleware/
 
 ## Templating
 
-(Technical description of the feature - 40ish words - 1 mark)
-
 Templating can be used with in vue to serve static files in the application. When running the app, the templating engine instantiates variables within the file with data from the javascript file and converts the template into a html file to be rendered by the client.
 
 ```js
