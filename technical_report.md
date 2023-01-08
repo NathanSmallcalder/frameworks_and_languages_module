@@ -121,7 +121,7 @@ Objects and arrays within JavaScript are mutable, after an object or array has b
     console.log(String1 === String2);
 ```
 
-Mutable objects prevent the program from reallocating space on the same variable, allowing the program to alter the variable when needed. However other variables in JS are immutable, when creating a new variable they all require a new object for each unique value, taking up space within the program.
+Mutable objects prevent the program from reallocating space on the same variable, allowing the program to alter the variable when needed. However,other variables in JS are immutable, when creating a new variable they all require a new object for each unique value, taking up space within the program.
 
 References<br>
 https://developer.mozilla.org/en-US/docs/Glossary/Mutable <br>
@@ -237,7 +237,7 @@ function Item(Id, user_id, keywords, description,lat,lon) {
 Item.prototype.image = "https://placekitten.com/200/100";
 ```
 
-Prototypical inheritance allows an object to inherit from different objects, providing the ability to reuse properties or methods from a JavaScript object to a new object through reference pointers. However, this means that JavaScript cannot provide multiple inheritances, one object can only have one prototype, since the value is always either null or a parent object reference.
+Prototypical inheritance allows an object to inherit from different objects, providing the ability to reuse properties or methods from a JavaScript object to a new object through reference pointers. However, this means that JavaScript cannot provide multiple inheritance, since the prototype value is always either null or a parent object reference.
 
 References<br>
 https://www.educative.io/blog/understanding-and-using-prototypal-inheritance-in-javascript<br>
