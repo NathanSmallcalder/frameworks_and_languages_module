@@ -9,17 +9,16 @@ Server Framework Features
 
 ## Routing
 
-Express JS allows the user to use routing to define URLs to separate webpages by configuring the ending of a URL, the application then responds to a HTTP request method, with each route being able to have multiple request methods, which have separate functionality, and executed when the URL is matched.
+Express JS allows the application to customize an applications endpoints, each endpoint have a handler functions, which are called when a user request that matches the specific URL and method and calls the function.
 
 ```js
-    app.post('/add', (req, res) =>{
+app.post('/add', (req, res) =>{
     STORAGE.push(req.body)
     res.status(201).json(req.body)
     console.log(STORAGE)
     })
 ```
-
-Routing enables the user to separate and utilize HTTP requests to provide different functionality per request,separating web traffic and providing multi-functionality to a request method. 
+Routing enables the application to separate HTTP requests to provide different functionality per request,separating web traffic and providing multi-functionality to a request method. 
 
 References<br>
 https://expressjs.com/en/guide/routing.html<br>
@@ -123,7 +122,7 @@ Objects and Arrays within JavaScript are mutable, after an object or array has b
     //Mutable
 ```
 
-Mutable objects prevent the program from re-allocating space on the same variable, allowing the program to alter the variable when needed. However other variables in JS are immutable, when creating a new variable they all require a new object for each unique value.
+Mutable objects prevent the program from re-allocating space on the same variable, allowing the program to alter the variable when needed. However other variables in JS are immutable, when creating a new variable they all require a new object for each unique value, taking up space within the program.
 
 References<br>
 https://developer.mozilla.org/en-US/docs/Glossary/Mutable <br>
@@ -151,7 +150,7 @@ Vue uses Interpolation to insert javascript variables, attributes and raw HTML i
     
 </div>
 ```
-Interpolation allows for a synchronization of variables, which removes the need for extra functions that re-render variables for HTML. Interpolation also provides extra functionality to evoke Javascript functions and expressions inside of data bindings.
+Interpolation allows for a synchronization of variables, which removes the need for extra functions that re-render variables for HTML. Interpolation also provides extra functionality to invoke Javascript functions and expressions inside of data bindings.
 
 References<br>
 https://medium.com/js-dojo/exploring-vue-js-reactive-two-way-data-binding-da533d0c4554<br>
@@ -170,7 +169,7 @@ Vue supports list rendering in html, which iterates through each item of an obje
 	<p> lon: {{item.lon}}</p>
 	<p>{{item.date_from}}</p>
 ```
-This prevents the over-engineering of JavaScript functions, to achieve this without Vue, a JavaScript function will have to be constructed which iterates through an item and returns a string which contains HTML and the variable to be displayed onto the HTML page, Vue avoids extra JavaScript function.
+This prevents the over-engineering of JavaScript functions, to achieve this without Vue, a JavaScript function will have to be constructed which iterates through an item and returns a string which contains HTML and the variable to be displayed onto the HTML page, Vue avoids extra and unnessasary functions and minimizes the code base.
 
 References<br>
 https://v1.vuejs.org/guide/list.html<br>
@@ -178,7 +177,7 @@ https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_Jav
 
 ## Methods and Event Handling
 
-Vue gives extra functionality to the binding of method, instead of binding to a method name, methods can be invoked from an inline JavaScript handler. JavaScript is then executed when the vue method is called when a user interacts with an element.
+Vue gives extra functionality to method binding, instead of binding to a method name, methods can be invoked from an inline JavaScript handler. JavaScript is then executed when the vue method is called when a user interacts with an element.
 
 ```html
 </div>
@@ -208,7 +207,7 @@ Client Language Features
 
 ## IndexOf
 
-IndexOf() can be called on an array to find the specific index of a given parameter which is parsed into the function . The function  uses a linear search on an array and returns the first matched value it finds.
+IndexOf() can be called on an array to find the specific index of a given parameter which is parsed into the function . The function uses a linear search on an array and returns the first matched value it finds.
 
 ```js
     const NumArray = [1, 2, 3, 4, 5];
