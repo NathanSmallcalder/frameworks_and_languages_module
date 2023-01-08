@@ -1,8 +1,7 @@
 Technical Report
 ================
 
-(intro)
-
+In this technical report, I will be justifiying the technolgoies used in the implementation of the FreeCycle application, aswell as critiquing the current prototype for the application, proving the need to implement frameworks to improve the software stack.
 
 Server Framework Features
 -------------------------
