@@ -244,6 +244,7 @@ References<br>
 https://www.educative.io/blog/understanding-and-using-prototypal-inheritance-in-javascript<br>
 https://www.toptal.com/javascript/es6-class-chaos-keeps-js-developer-up <br>
 https://www.w3schools.com/js/js_object_prototypes.asp <br>
+https://www.educative.io/blog/understanding-and-using-prototypal-inheritance-in-javascript<br>
 
 
 Critique of Server/Client prototype
