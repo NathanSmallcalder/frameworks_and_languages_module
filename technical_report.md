@@ -226,14 +226,24 @@ https://medium.com/@nathanbell09/binary-search-vs-indexof-63651f91acb7
 Instead of using class inheritance, JavaScript uses prototypical inheritance, where an object is a prototype of another object and can be used to add methods and properties to other objects.
 
 ```js
+function Item(Id, user_id, keywords, description,lat,lon) {
+  this.id = Id;
+  this.user_id = user_id;
+  this.keywords = keywords;
+  this.description = description;
+  this.lat = lat;
+  this.lon = lon;
+}
 
+Item.prototype.image = "https://placekitten.com/200/100";
 ```
 
 Prototypical inheritance allows an object to inherit from multiple different objects, providing the ability to reuse properties or methods from a JavaScript object to a new object through reference pointers.
 
 References<br>
 https://www.educative.io/blog/understanding-and-using-prototypal-inheritance-in-javascript<br>
-<https://www.toptal.com/javascript/es6-class-chaos-keeps-js-developer-up>
+https://www.toptal.com/javascript/es6-class-chaos-keeps-js-developer-up <br>
+https://www.w3schools.com/js/js_object_prototypes.asp <br>
 
 
 Critique of Server/Client prototype
