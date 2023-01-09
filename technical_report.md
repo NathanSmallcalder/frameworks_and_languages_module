@@ -8,7 +8,7 @@ Server Framework Features
 
 ## Routing
 
-Express JS allows the application to customize an application's endpoints, each endpoint can have one or more handler functions, and when a user requests a specific route, the handler functions are executed.
+Express JS allows the application to customize diffrent endpoints, each endpoint can have one or more handler functions, and when a user requests a specific route, the handler functions are executed.
 
 ```js
 app.post('/add', (req, res) =>{
@@ -18,7 +18,7 @@ app.post('/add', (req, res) =>{
     })
 ```
 
-Routing enables the application to separate HTTP requests to provide different functionality per request or provide multi-functionality to a singular route, which separates web traffic and can provide routes with multiple features or HTTP request methods. 
+Routing enables the application to separate HTTP requests, which can help provide be used to provide different functionality to each individual request or provide multi-functionality to a singular route, aswell as separating web traffic between diffrent endpoints. 
 
 References<br>
 https://expressjs.com/en/guide/routing.html<br>
@@ -27,14 +27,14 @@ https://expressjs.com/en/starter/basic-routing.html<br>
 
 ## Middleware 
 
-Middleware integrates pre and post-processing into the requests and response methods, allowing a method to be invoked before the client receives a response and after the client returns a response, providing functionality to manipulate response or request objects. Middleware functions are typically embedded in one or more route handlers, executing when an HTTP request is received.
+Middleware integrates pre and post-processing into the requests and response methods, allowing a method to be invoked before the client receives a response and after the client returns a response. Middleware functions are typically embedded in one or more route handlers, executing when an HTTP request is received.
 
 ```js
   var cors = require('cors');
   app.use('*', cors())
 ```
 
-By having access to the request and response objects, middleware can be used for a variety of different tasks, being able to manipulate different features of the system; from error control to third-party options, allowing the application to store a user session by utilizing cookies or enable cross-origin resource sharing.
+By having access to the request and response objects, middleware can be used for a variety of different tasks, for example, middleware can manipulate different features of the system; from error control to third-party options, allowing the application to store a user session by utilizing cookies or enable cross-origin resource sharing.
 
 References<br>
 https://expressjs.com/en/guide/using-middleware.html<br>
@@ -102,7 +102,7 @@ var itemID = parseInt(req.params.id)
   }
 ```
 
-The ```HasOwnProperty()``` function will return true if the given property is an attribute within the object, even if the value is null or undefined, and can be called on most objects, to see if a given object contains an attribute, which prevents unnecessary object loops to find a given variable or an overcomplicated implementation of a static language.
+The ```HasOwnProperty()``` function will return true if the given property is an attribute within the object, even if the value is null or undefined, and can be called on most objects, to see if a given object contains an attribute, which prevents unnecessary loops to find a given variable or an overcomplicated implementation of a static language.
 
 References <br>
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty<br>
