@@ -27,7 +27,7 @@ https://expressjs.com/en/starter/basic-routing.html<br>
 
 ## Middleware 
 
-Middleware integrates pre and post-processing into the requests and response methods, allowing a method to be invoked before the client receives a response and after the client returns a response. Middleware functions are typically embedded in one or more route handlers, executing when an HTTP request is received.
+Middleware integrates pre and post-processing into the requests and response methods, allowing a method to be invoked before the client receives a response and after the server returns a response. Middleware functions are typically embedded in one or more route handlers, executing when an HTTP request is received.
 
 ```js
   var cors = require('cors');
@@ -81,7 +81,7 @@ app.get('/home', (req, res) => {
 </ul>
 ```
 
-Templating minimizes the code bases and enables variables to be parsed directly into HTML to be viewed by the client, maximizing client-side processing. Templating also gives the ability to provide a base template and expand multiple different pages on the original layout, reducing duplicate code.
+Templating minimizes the code base and enables variables to be parsed directly into HTML to be viewed by the client, maximizing client-side processing. Templating also gives the ability to provide a base template and expand multiple different pages on the original layout, reducing duplicate code.
 
 References <br>
 https://expressjs.com/en/guide/using-template-engines.html<br>
@@ -93,7 +93,7 @@ Server Language Features
 
 ## Reflection
 
-JavaScript uses reflection, which enables objects to look at owned properties and functions, this gives an advantage over using a static language, item properties can be stored dynamically, and can be accessed easily by using the ```HasOwnProperty()``` function which can be called on an object to check whether the object contains an attribute.
+JavaScript uses reflection, which enables objects to look at owned properties and functions, this gives an advantage over using a static language, item properties can be stored dynamically, and can be accessed easily by using the```HasOwnProperty()``` function which can be called on an object to check whether the object contains an attribute.
 
 ```js
 var itemID = parseInt(req.params.id)
